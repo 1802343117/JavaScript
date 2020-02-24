@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>云班课JavaScript 1-2</title>
+    <!-- 变量的定义与使用 -->
+    <script>
+      var x = "---你好 JavaScript---";
+      document.write(x);
+      /*--变量的命名（区分大小写）
+      1。由字母、数字、下划线、￥符号组成，不能以数字开头
+      2.不能是关键字和保留字，例如：for、while、this、name
+      3.区分大小写
+      4.不能是算数运算符
+      --*/
+      var X = 100;
+      document.write(typeof X);
+      /*--JavaScript 数据类型--*/
+      var hello = "hello world"; //字符串(String)类型
+      var age = 21; //数字(number)类型
+      var live = true; //布尔(boolean)类型
+      var girlfriend = null; //空(null)
+      var favsong = undefined; //为定义（undefined）
+      //对象(Object)类型
+      var Car = {
+        name: "奔驰",
+        Status: "漏油"
+      };
+      /*--布尔值--*/
+      var x = true;
+      var y = false;
+      /*--数字（x1==x2）--*/
+      var x1 = 34.0; //带小数
+      var x2 = 34; //不带小数
+      /*--使用科学(指数)计数法书写--*/
+      var y = 123e5; //12300000
+      var z = 123e-5; //0.00123
+      /*--字符串--*/
+      var carname = "volvo xc60"; //使用双引号赋值
+      var carname = "volvo xc60"; //使用单引号赋值（这里由于文本格式化统一了样式，使用不能所以双引号进行赋值）
+      //在赋值的字符串中，若 内部引号 与 外部引号 相同时则需要添加反斜杠（\）例如：/"字符串内部引号中内容/"(/'字符串内部引号中内容/')
+      var sayHello = '在使用双引号("")赋值的情况下，字符串中含有"双引号"';
+      /*--空值（null）与未定义(undefined)--*/
+      var a = null; //指已经赋过值了，只是值为：null（空）而已
+      var b = undefined; //指从未符过值
+      //变量在未被赋值的情况下，使用 typeof运算符 将指定的值转换成字符串
+      var A;
+      typeof A; //在赋值的情况下，将其转换成字符串；结果为：undefined
+      var B = 42;
+      typeof B; //在赋值的情况下，将其转换成字符串；结果为：number
+      B = A; //将C赋值给D
+      typeof B; //其结果为：undefined
+      /*--typeof运算符的使用(查看 值 的类型)--*/
+      typeof undefind === "undefined"; // 返回值为：true
+      typeof true === "boolean"; // 返回值为：true
+      typeof 42 === "number"; // 返回值为：true
+      typeof "字符串" === "string"; // 返回值为：true
+      typeof { lift: 42 } === "object"; // 返回值为：true
+      // ES6中新加入的Symbol类型
+      typeof Symbol() === "symbol"; // 返回值为：true
+      //空(null)值 比较特殊
+      typeof null === "object"; // 返回值为：true
+      //注：在JavaScript中 “=” —— 赋值；“==” —— 等于；“===” —— 绝对等于
+      /*--逻辑运算符--*/
+      // “&&” —— 与（and）
+      // “||” —— 或（or）
+      // “!” —— 非（not）
+      /*--三元运算符--*/
+      var variable = condition ? value1 : valu2;
+      var isAdult = age < 18 ? "未成年" : "成年";
+      /*--字符串长度--*/
+      var txt = "0123456789";
+      var len = txt.length;
+      /*--字符串中插入变量--*/
+      var myName = "Loen";
+      var myStr = "My name is" + myName + " and I am well";
+      /*--字符串的不可变性--*/
+      var my = "Bob";
+      my[0] = "J"; // my 的值依然是 Bob 不会被改变
+      var MY = "Bob";
+      MY = "Job"; // MY 的值发生了改变,变为：Job
+    </script>
+  </head>
+  <body>
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>云班课JavaScript 1-5</title>
+    <script>
+      /*--对象属性--*/
+      /*
+            可以说"JavaScript对象是变量的容器".通常认为"JavaScript对象是键值对的容器"。
+            键值对通常写法为：naem：value（键与值以冒号分割）。键值对在JavaScript对象通常称为对象属性
+            */
+      /*JavaScript 对象是属性变量的容器*/
+      //可以通过两种方式访问对象属性
+      var person = {
+        name: "John",
+        age: 31,
+        favColor: "green",
+        height: 183
+      };
+      var x = person.age; //第一种
+      var y = person["age"]; //第二种
+      /*--JavaScript的内置长度属性用于计算属性或字符串中的字符数--*/
+      var course = { name: "JS", lessons: 54 };
+      console.log("名字的长度为：" + course.name.length);
+      /*--当创建了一个对象后， 可以用 点（.）或 大括号（[]）来更新对象的属性--*/
+      var ourDog = {
+        name: "Camper",
+        legs: 4,
+        tails: 1,
+        friends: ["everything!"]
+      };
+      //如果更改它名称为：Happy Camper ，有两种方式来进行更新对象的 name 属性
+      ourDog.name = "Happy Camper";
+      ourDog["name"] = "Happy Camper";
+      //也可以仙更改属性一样给对象添加属性
+      ourDog.bark = "bow-wow"; //等价于 ourDog['bark'] = 'bow-wow';
+      //同样可以删除对象属性
+      var c1 = ourDog["tails"]; //c1 等于 1(相当于赋值)
+      //删除 tails 属性
+      delete ourDog["tails"]; //等价于 delete ourDog.tails
+      var c2 = ourDog["tails"]; // c2 等于 undefined
+      console.log(ourDog);
+      /*--对象方法--*/
+      //使用 String对象 的toUpperCase()方法来将文本转换为大写
+      var message = "Hello world!!!";
+      var x = message.toUpperCase();
+      //使用 [] 读取对象属性
+      var a = "age";
+      var myObj = {
+        name: "Loen",
+        age: "28",
+        eat: function() {
+          return "I'm eating";
+        }
+      };
+      console.log(myObj["name"]); //Loen
+      console.log(myObj[a]); //可以用变量访问对象属性，这里返回 28
+      console.log(myObj["eat"]()); //返回I'm eating
+      /*--对象构造器--*/
+      //JavaScript使用函数来构造对象
+      function person(firstname, lastname, age, eyecolor) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.eyecolor = eyecolor;
+      }
+      //在JavaScript中，this通常指向的是我们正在执行的函数本身，或是指向函数所属的对象（运行时）
+      //一旦有了对象构造器，就可以创建新的对象实例，就像这样：
+      var myFather = new person("John", "Doe", 50, "blue");
+      var myMother = new person("Sally", "Rally", 48, "green");
+      console.log(myFather.age); // -> 50
+      console.log(myMother.firstname); // -> Sally
+      //myFather 和 myMother 都是 Person 对象的实例，它们的属性分配给相应的值
+      /*--对象初始化--*/
+      //使用英文大括号 {} 创建单个对象
+      var John = { name: "John", age: 25 };
+      var Loen = { name: "Loen", age: 28 };
+      //使用对象初始化器的时候，空格和换行符并不重要，对象定义可以跨多行。
+      var John = {
+        name: "John",
+        age: 25
+      };
+      var Loen = {
+        name: "Loen",
+        age: 28
+      };
+      /*--添加方法--*/
+      //方法是存储在对象属性中的函数
+      //可以使用以下方式创建对象函数
+      //   methodName:function(){ code lines}
+      //使用一下方式访问对象函数
+      objectName.methodName();
+      //this 关键词是当前对象的引用，可以使用this来访问对象属性和方法
+      //在构造函数中定义方法
+      function person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.changeName = function(name) {
+          this.name = name;
+        };
+      }
+      var p = new person("Loen", 28);
+      p.changeName("John");
+      //也可以在构造函数外部定义一个函数，通过函数名关联到对象的属性上；
+      function person1(name, age) {
+        this.name = name;
+        this.age = age;
+        this.yearOfBirth = bornYear; //关联 bornYear 函数
+      }
+      function bornYear() {
+        return new Date().getFullYear() - this.age;
+      }
+    </script>
+  </head>
+  <body>
+    <script></script>
+  </body>
+</html>

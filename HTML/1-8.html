@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>云班课JavaScript 1-8</title>
+    <!-- DOM 动画 -->
+    <script></script>
+    <!-- 要想选择和更改DOM元素，我们可以创建一个简单的动画。
+        创建一个简单的HTML页面，其中包含将使用JS动画的框元素。 -->
+    <style>
+      /*--容器--*/
+      #container {
+        width: 600px;
+        height: 400px;
+        background: rgb(170, 199, 170);
+        position: relative; /*相对*/
+      }
+      /*--盒子--*/
+      #box {
+        width: 60px;
+        height: 60px;
+        background: rgb(211, 144, 144);
+        position: absolute; /*绝对*/
+      }
+    </style>
+    <!-- 使用动画，将红色框移动到容器的右侧
+    要创建动画，我们需要以较小的时间间隔更改元素的属性 -->
+    <!-- 我们可以通过使用 setInterval() 方法来实现这一点，它允许我们创建一个定时器并调用一个以定义的
+        间隔（以毫秒为单位）反复更改属性的函数
+        创建一个每500毫秒调用一个 move() 函数的计时器 -->
+  </head>
+  <body>
+    <div id="container">
+      <div id="box"></div>
+    </div>
+
+    <div class="demo"><span class="demo">Hi I'm Loen!</span></div>
+    <p class="demo">This is a paragraph</p>
+
+    <p>hi</p>
+    <p>hello</p>
+    <p>hi</p>
+
+    <div id="demo1">
+      <p>一些文本</p>
+      <p>另一些文本</p>
+    </div>
+
+    <img id="my-img" src="../img/1.jpeg" alt="" />
+
+    <a href="http://www.baidu.com">百度</a>
+
+    <div id="demo2" style="width:200px">一些文本</div>
+
+    <div id="demo3">一些文本</div>
+
+    <div id="demo4">
+      <p id="p1">这是一个段落.</p>
+      <p id="p2">这是另外一个段落.</p>
+    </div>
+
+    <div id="demo5">
+      <p id="p1">这是一个段落</p>
+      <p id="p2">这是另一个段落</p>
+    </div>
+    <script type="text/javascript" src="../JS/1-8.js">
+      var arr = document.getElementsByClassName("demo");
+      //访问第二个元素
+      arr[1].innerHTML = "Hi I am Peter";
+
+      var arr1 = document.getElementsByTagName("p");
+      for (var x = 0; x < arr1.length; x++) {
+          arr1[x].innerHTML = "Hi there";
+        }
+        //提示: 通常使用数组的length属性循环遍历上面例子中的所有选择的元素。
+    </script>
+  </body>
+</html>

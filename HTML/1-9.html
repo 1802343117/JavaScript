@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>云班课JavaScript 1-9</title>
+    <!-- JavaScript事件 -->
+    <!-- 
+        JavaScript使我们有能力创建动态页面，网页中的每一个元素都可以产生某些触发JavaScript函数的事件。
+        事件是可以被JavaScript侦测到的一种行为。
+     -->
+    <script>
+      /*--事件流--*/
+      //所谓事件流，也可理解为事件的轨迹。一般地，将事件流分为三个阶段：捕获阶段，目标阶段和冒泡阶段
+      //我们可以编写事件触发执行的Javascript代码，例如用户单击HTML元素，移动鼠标或提交表单时。当目标元素发生事件时，执行处理函数。
+      //提示: 相应的事件可以添加到HTML元素作为属性
+
+      /*--处理事件--*/
+      //当用户单击指定的按钮时，我们将显示一个提醒弹出窗口：
+      function show() {
+        alert("你好,我在这里!");
+      }
+
+      //可以给元素绑定事件监听:
+      var x = document.getElementById("demo");
+      x.onclick = function() {
+        document.getElementById("date").innerHTML = new Date();
+      };
+
+      //当用户进入或离开页面时，触发 onload 和 onunload 事件。在页面加载后执行操作时，这些操作非常有用
+
+      //类似地，window.onload 事件可以用于在整个页面加载之后运行代码。
+      window.onload = function() {
+        alert("整个页面已经加载完成");
+      };
+      //onchange 事件主要用于文本框。当文本框内的文本发生变化并且焦点从元素中丢失时，调用事件处理程序
+      //例如：
+      function change() {
+        var x = document.getElementById("name");
+        x.value = x.value.toUpperCase(); // 转成大写
+      }
+      //以上程序在用户名发生改变时,将其值转成大写
+
+      /*-- 事件监听--*/
+      /*
+      addEventListener() 方法将事件处理程序附加到元素，而不会覆盖现有的事件处理程序
+      可以向一个元素添加许多事件处理程序，还可以将许多同一类型的事件处理程序添加到一个元素，即两个“点击”事件
+      第一个参数是事件的类型（如“click”或“mouseover”），第二个参数是事件发生时要调用的函数，第三个参数是一个布尔值，指定是否使用事件冒泡或事件捕获，此参数是可选的
+      */
+      //提示:在添加事件类型的时候没有on, 用的是 click 而不是 onclick
+      element.addEventListener("click", myFunction);
+      element.addEventListener("mouseover", myFunction);
+      function myFunction() {
+        alert("Hello JavaScript！");
+      }
+
+      /*-- 删除事件监听--*/
+      //可以使用 removeEventListener 删除事件监听：element.removeEventListener("mouseover", myFunction);
+      //创建一个事件处理程序，在执行后会自动删除：
+      var btn = document.getElementById("demo");
+      btn.addEventListener("click", myFunction);
+      function myFunction() {
+        alert(Math.random());
+        btn.removeEventListener("click", myFunction);
+      }
+      //单击按钮后，将显示带有随机数的警报，并删除事件监听器。
+
+      /*--幻灯片案例--*/
+      //创建一个示例图像幻灯片项目，使用“下一张”和“上一张”按钮更改图像。
+      //先创建HTML，其中包括一个图像和两个导航按钮：
+      //   接下来，让我们在数组中定义我们的示例图像：
+      var images = [
+        "https://niit-soft.oss-cn-hangzhou.aliyuncs.com/cover/11.jpg",
+        "https://niit-soft.oss-cn-hangzhou.aliyuncs.com/cover/12.jpg",
+        "https://niit-soft.oss-cn-hangzhou.aliyuncs.com/cover/13.jpg",
+        "https://niit-soft.oss-cn-hangzhou.aliyuncs.com/cover/14.jpg",
+        "https://niit-soft.oss-cn-hangzhou.aliyuncs.com/cover/15.jpg"
+      ];
+      //现在我们需要处理 "上一个" 和 "下一个" 按钮点击并调用相应的功能来更改图像。
+      var num = 0;
+      function next() {
+        var slider = document.getElementById("slider");
+        num++;
+        if (num >= images.length) {
+          num = 0;
+        }
+        slider.src = images[num];
+      }
+      function prev() {
+        var slider = document.getElementById("slider");
+        num--;
+        if (num < 0) {
+          num = images.length - 1;
+        }
+        slider.src = images[num];
+      }
+      //提示: num 变量保存当前图像。下一张和上一张按钮点击由它们相应的功能来处理
+
+      /*--表单验证--*/
+      /**
+       * HTML5添加了一些允许表单验证的属性。例如，require 属性可以添加到输入字段，以使其强制填写。
+       * 更复杂的表单验证可以使用JavaScript来完成。
+       * 表单元素具有可以处理以执行验证的 onsubmit 事件。
+       * 例如，创建一个带有两个输入框和一个按钮的窗体。两个字段中的文本应该相同，不能为空，才可通过验证
+       */
+      //现在我们需要定义 validate() 函数：
+      function validate() {
+        var n1 = document.getElementById("num1");
+        var n2 = document.getElementById("num2");
+        if (n1.value != "" && n2.value != "") {
+          if (n1.value == n2.value) {
+            return true;
+          }
+        }
+        alert("输入两个值不相等,请重新输入!");
+        return false;
+      }
+      //只有当值不为空且相等时才返回 true
+      //提示: 如果其 onsubmit 事件返回 false，表单将不会被提交。更多的数据验证做法同理。
+    </script>
+  </head>
+  <body onload="doSomething()">
+    <p id="tip">这边显示提示</p>
+    <h2 id="tip">这边显示提示</h2>
+    <hr />
+    <p onclick="clickfn()">点击我看看</p>
+    <br />
+    <input type="text" onfocus="focusfn()" onblur="blurfn()" value="获得焦点" />
+    <br /><br />
+    <div onmouseover="moverfn()" onmouseout="moutfn()" style="">
+      鼠标移动进来看看
+    </div>
+
+    <button onclick="show()">点击我</button>
+
+    <input type="text" id="name" onchange="change()" />
+
+    <button id="demo">开始</button>
+
+    <div>
+      <button onclick="prev()">上一张</button>
+      <img
+        id="slider"
+        src="https://niit-soft.oss-cn- hangzhou.aliyuncs.com/cover/6.jpg"
+      />
+      <button onclick="next()">下一张</button>
+    </div>
+
+    <form onsubmit="return validate()" method="post">
+      Number: <input type="text" name="num1" id="num1" /> <br />
+      Repeat: <input type="text" name="num2" id="num2" /> <br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

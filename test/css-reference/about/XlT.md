@@ -1,3 +1,5 @@
+**动画效果**
+
 <!DOCTYPE html>
 
 <html>
@@ -9,6 +11,9 @@
 ​    <title>animation-timing-function 属性</title>
 
     <style>
+        
+''''
+
 
 ​        .div {
 
@@ -63,6 +68,8 @@
 ​            */\*Safari and Chrome\*/*
 
 ​        }
+
+''''
 
 ​        @keyframes mymove {
 
